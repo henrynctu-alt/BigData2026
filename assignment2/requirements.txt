@@ -1,0 +1,6 @@
+# Install PyTorch for your CPU/CUDA environment before these requirements.
+numpy>=1.26,<3
+pandas>=2.2,<3
+pyarrow>=18
+scikit-learn>=1.5
+matplotlib>=3.9

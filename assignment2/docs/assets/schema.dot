@@ -1,0 +1,33 @@
+digraph schema {
+rankdir=LR; nodesep=0.6; ranksep=1; splines=polyline;
+node [shape=plain,fontsize=11,fontname="Helvetica"];
+edge [color="#64748b",arrowsize=0.65];
+Users [label=<<TABLE BORDER="1" CELLBORDER="1" CELLSPACING="0" CELLPADDING="6"><TR><TD BGCOLOR="#dceafa"><B>Users</B></TD></TR><TR><TD PORT="user_id" ALIGN="LEFT">PK: user_id</TD></TR></TABLE>>];
+Repositories [label=<<TABLE BORDER="1" CELLBORDER="1" CELLSPACING="0" CELLPADDING="6"><TR><TD BGCOLOR="#dceafa"><B>Repositories</B></TD></TR><TR><TD PORT="repo_id" ALIGN="LEFT">PK: repo_id</TD></TR></TABLE>>];
+PullRequests [label=<<TABLE BORDER="1" CELLBORDER="1" CELLSPACING="0" CELLPADDING="6"><TR><TD BGCOLOR="#dceafa"><B>PullRequests</B></TD></TR><TR><TD PORT="pr_id" ALIGN="LEFT">PK: pr_id</TD></TR><TR><TD PORT="repo_id" ALIGN="LEFT">FK: repo_id</TD></TR><TR><TD PORT="author_id" ALIGN="LEFT">FK: author_id</TD></TR><TR><TD PORT="merged_by_id" ALIGN="LEFT">FK: merged_by_id</TD></TR></TABLE>>];
+Issues [label=<<TABLE BORDER="1" CELLBORDER="1" CELLSPACING="0" CELLPADDING="6"><TR><TD BGCOLOR="#dceafa"><B>Issues</B></TD></TR><TR><TD PORT="issue_id" ALIGN="LEFT">PK: issue_id</TD></TR><TR><TD PORT="repo_id" ALIGN="LEFT">FK: repo_id</TD></TR><TR><TD PORT="author_id" ALIGN="LEFT">FK: author_id</TD></TR><TR><TD PORT="pull_request_id" ALIGN="LEFT">FK: pull_request_id</TD></TR><TR><TD PORT="assignee_id" ALIGN="LEFT">FK: assignee_id</TD></TR></TABLE>>];
+IssueComments [label=<<TABLE BORDER="1" CELLBORDER="1" CELLSPACING="0" CELLPADDING="6"><TR><TD BGCOLOR="#dceafa"><B>IssueComments</B></TD></TR><TR><TD PORT="comment_id" ALIGN="LEFT">PK: comment_id</TD></TR><TR><TD PORT="issue_id" ALIGN="LEFT">FK: issue_id</TD></TR><TR><TD PORT="repo_id" ALIGN="LEFT">FK: repo_id</TD></TR><TR><TD PORT="author_id" ALIGN="LEFT">FK: author_id</TD></TR></TABLE>>];
+PRReviews [label=<<TABLE BORDER="1" CELLBORDER="1" CELLSPACING="0" CELLPADDING="6"><TR><TD BGCOLOR="#dceafa"><B>PRReviews</B></TD></TR><TR><TD PORT="review_id" ALIGN="LEFT">PK: review_id</TD></TR><TR><TD PORT="pr_id" ALIGN="LEFT">FK: pr_id</TD></TR><TR><TD PORT="repo_id" ALIGN="LEFT">FK: repo_id</TD></TR><TR><TD PORT="reviewer_id" ALIGN="LEFT">FK: reviewer_id</TD></TR></TABLE>>];
+PRReviewComments [label=<<TABLE BORDER="1" CELLBORDER="1" CELLSPACING="0" CELLPADDING="6"><TR><TD BGCOLOR="#dceafa"><B>PRReviewComments</B></TD></TR><TR><TD PORT="comment_id" ALIGN="LEFT">PK: comment_id</TD></TR><TR><TD PORT="pr_id" ALIGN="LEFT">FK: pr_id</TD></TR><TR><TD PORT="repo_id" ALIGN="LEFT">FK: repo_id</TD></TR><TR><TD PORT="author_id" ALIGN="LEFT">FK: author_id</TD></TR><TR><TD PORT="pull_request_review_id" ALIGN="LEFT">FK: pull_request_review_id</TD></TR><TR><TD PORT="in_reply_to_id" ALIGN="LEFT">FK: in_reply_to_id</TD></TR></TABLE>>];
+Pushes [label=<<TABLE BORDER="1" CELLBORDER="1" CELLSPACING="0" CELLPADDING="6"><TR><TD BGCOLOR="#dceafa"><B>Pushes</B></TD></TR><TR><TD PORT="push_id" ALIGN="LEFT">PK: push_id</TD></TR><TR><TD PORT="user_id" ALIGN="LEFT">FK: user_id</TD></TR><TR><TD PORT="repo_id" ALIGN="LEFT">FK: repo_id</TD></TR></TABLE>>];
+PullRequests:repo_id:e -> Repositories:repo_id:w;
+PullRequests:author_id:e -> Users:user_id:w;
+PullRequests:merged_by_id:e -> Users:user_id:w;
+Issues:repo_id:e -> Repositories:repo_id:w;
+Issues:author_id:e -> Users:user_id:w;
+Issues:pull_request_id:e -> PullRequests:pr_id:w;
+Issues:assignee_id:e -> Users:user_id:w;
+IssueComments:issue_id:e -> Issues:issue_id:w;
+IssueComments:repo_id:e -> Repositories:repo_id:w;
+IssueComments:author_id:e -> Users:user_id:w;
+PRReviews:pr_id:e -> PullRequests:pr_id:w;
+PRReviews:repo_id:e -> Repositories:repo_id:w;
+PRReviews:reviewer_id:e -> Users:user_id:w;
+PRReviewComments:pr_id:e -> PullRequests:pr_id:w;
+PRReviewComments:repo_id:e -> Repositories:repo_id:w;
+PRReviewComments:author_id:e -> Users:user_id:w;
+PRReviewComments:pull_request_review_id:e -> PRReviews:review_id:w;
+PRReviewComments:in_reply_to_id:e -> PRReviewComments:comment_id:w;
+Pushes:user_id:e -> Users:user_id:w;
+Pushes:repo_id:e -> Repositories:repo_id:w;
+}

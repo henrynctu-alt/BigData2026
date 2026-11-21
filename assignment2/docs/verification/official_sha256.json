@@ -1,0 +1,10 @@
+{
+  "official/SCHEMA.md": "7f8c8846b09783e5d1bbfa94515c1992bcdf0c66f9729bf8bca31be90043feb6",
+  "official/COMMIT.txt": "95cf372229991383f0b68bdfb8103e8329c53ff5ede24b3b25b44374c20c1495",
+  "official/README.md": "2ab38f28579e746742f925b0fee6517992e7cbea8a1105fc19db16411cb62f96",
+  "official/scripts/evaluate.py": "fa1f695ececab08b7250b3f6a5b89f7555fd6ca6ca4ec54da3a75bbeb2b885cf",
+  "official/scripts/cohort.txt": "4d3c38abfaa85928c8c6ee5ccdbaf4c5702c981167f354cdb83258d516d3309c",
+  "official/scripts/preprocess.py": "71452813dc4a1f0f3e9455f94f9eb114a9609b7032c1094fc0a9eebc43d54de4",
+  "official/submission/sample_submission.csv": "32f6377e9ac121b97528ae3a6cd0968d43452f03e7dd85b68487b93964f5b04e",
+  "official/submission/test_input.csv": "3bc4f0e2250f44bad45dfcd6dbc9517e0dd4aa5959d9ec11540859e052931f8e"
+}
