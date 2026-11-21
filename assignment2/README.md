@@ -147,7 +147,7 @@ python official/scripts/preprocess.py \
 Use the latest course test user list. The bundled `official/submission/test_input.csv` contains 4,465 users. Set `CHECKPOINT` to the actual checkpoint selected for submission. The example below uses Additive from the 29-week run because it had the highest recorded validation score.
 
 ```bash
-CHECKPOINT=runs/no_gnn_repro/models/additive/model.pt
+CHECKPOINT=runs/full/models/additive/model.pt
 TEST_USERS=official/submission/test_input.csv
 PREDICTION=outputs/output_314561001.csv
 
